@@ -17,8 +17,8 @@ CORS(app)
 
 menu = [
     {"id": 1, "name": "Pizza", "price": 299, "image": "/images/pizza.jpg"},
-    {"id": 2, "name": "Burger", "price": 149, "image": "/images/burger.jpg"},
-    {"id": 3, "name": "Biryani", "price": 249, "image": "/images/biryani.jpg"}
+    {"id": 2, "name": "Burger", "price": 149, "image": "/images/Burger.jpg"},
+    {"id": 3, "name": "Biryani", "price": 249, "image": "/images/Biryani.jpg"}
 ]
 
 @app.route("/menu")

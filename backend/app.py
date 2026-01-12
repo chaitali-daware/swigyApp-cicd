@@ -16,9 +16,9 @@ app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
 CORS(app)
 
 menu = [
-    {"id": 1, "name": "Pizza", "price": 299, "image": "/images/pizza.jpg"},
-    {"id": 2, "name": "Burger", "price": 149, "image": "/images/Burger.jpg"},
-    {"id": 3, "name": "Biryani", "price": 249, "image": "/images/Biryani.jpg"}
+    {"id": 1, "name": "Pizza", "price": 299, "image": "images/pizza.jpg"},
+    {"id": 2, "name": "Burger", "price": 149, "image": "images/Burger.jpg"},
+    {"id": 3, "name": "Biryani", "price": 249, "image": "images/Biryani.jpg"}
 ]
 
 @app.route("/menu")

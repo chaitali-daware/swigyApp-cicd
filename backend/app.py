@@ -8,10 +8,6 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 # Frontend folder path
 FRONTEND_DIR = os.path.join(PROJECT_ROOT, "frontend")
 
-print("PROJECT_ROOT:", PROJECT_ROOT)
-print("FRONTEND_DIR:", FRONTEND_DIR)
-print("INDEX EXISTS:", os.path.exists(os.path.join(FRONTEND_DIR, "index.html")))
-
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
 CORS(app)
 
@@ -34,10 +30,6 @@ def order(item):
 def home():
     return send_from_directory(FRONTEND_DIR, "index.html")
 
-# Serve JS, CSS, images
-@app.route("/<path:path>")
-def static_files(path):
-    return send_from_directory(FRONTEND_DIR, path)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

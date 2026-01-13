@@ -14,12 +14,8 @@ RUN pip install --no-cache-dir -r backend/requirements.txt
 # STEP 5: Expose backend port
 EXPOSE 5000
 
-# Use Flask environment variables
-ENV FLASK_APP=backend/app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-ENV FLASK_ENV=production
-
-CMD ["flask", "run"]
+# STEP 6: Run Flask app directly
+CMD ["python", "backend/app.py"]
 
 
 

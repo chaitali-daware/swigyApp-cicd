@@ -2,13 +2,11 @@ from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 
-# Absolute path to project root
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# Get absolute paths
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "frontend"))
 
-# Frontend folder path
-FRONTEND_DIR = os.path.join(PROJECT_ROOT, "frontend")
-
-app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
+app = Flask(__name__)
 CORS(app)
 
 menu = [
@@ -21,15 +19,14 @@ menu = [
 def get_menu():
     return jsonify(menu)
 
-@app.route("/order/<item>", methods=["POST"])
-def order(item):
-    return jsonify({"message": f"Order placed successfully for {item}"})
-
-# Serve index.html at root
 @app.route("/")
 def home():
     return send_from_directory(FRONTEND_DIR, "index.html")
 
+# 🔑 THIS IS THE MOST IMPORTANT PART
+@app.route("/<path:filename>")
+def serve_static_files(filename):
+    return send_from_directory(FRONTEND_DIR, filename)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

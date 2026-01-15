@@ -28,5 +28,10 @@ def get_menu():
 def home():
     return render_template("index.html")
 
+@app.route("/order/<item>", methods=["POST"])
+def order_food(item):
+    return jsonify({"message": f"{item} ordered successfully!"})
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
